@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title">Create Account</h1>
+    <h1 class="title">Sua Conta</h1>
 
     <h2 class="subtitle">
       Crie sua conta para salvar seus dados
@@ -9,36 +9,32 @@
     <form v-if="!loggedIn" @input="submit" class="form">
       <div class="form-group">
         <label class="form-label" for="email">Email</label>
-        <input @blur="checkIfUserExists"  type="text" v-model="$v.form.email.$model" placeholder="your@email.com" class="form-control" id="email">
-        <div v-if="$v.form.email.$error && !$v.form.email.required" class="error">email is required</div>
-        <div v-if="$v.form.email.$error && !$v.form.email.email" class="error">email is invalid</div>
+        <input @blur="checkIfUserExists" type="text" v-model="$v.form.email.$model" placeholder="seu@email.com" class="form-control" id="email">
+        <div v-if="$v.form.email.$error && !$v.form.email.required" class="error">email é requerido</div>
+        <div v-if="$v.form.email.$error && !$v.form.email.email" class="error">email é requerido</div>
       </div>
-      <div v-if="emailCheckedInDB" class="form-group">
-        <label class="form-label" for="password">Password</label>
-        <input v-model="$v.form.password.$model" type="password" placeholder="Super Secret Password" class="form-control" id="password">
-        <div v-if="$v.form.password.$error && !$v.form.password.required" class="error">password is required</div>
-        <div v-if="$v.form.password.$error && !$v.form.password.correct" class="error">password is invalid - try again</div>
+      <div class="form-group">
+        <label class="form-label" for="password">Senha</label>
+        <input v-model="$v.form.password.$model" type="password" placeholder="Password Super Secreto" class="form-control" id="password">
+        <div v-if="$v.form.password.$error && !$v.form.password.required" class="error">password é requerido</div>
+        <div v-if="$v.form.password.$error && !$v.form.password.correct" class="error">password é requerido - tente de novo</div>
       </div>
 
       <div v-if="existingUser" class="class-group">
         <button @click.prevent="login" class="btn">Login</button>
       </div>
 
-      <div v-if="emailCheckedInDB && !existingUser" class="form-group">
-        <label class="form-label" for="name">Name</label>
-        <input v-model="$v.form.name.$model" type="text" placeholder="What should we call you?" class="form-control" id="name">
-        <div v-if="$v.form.name.$error" class="error">name is required</div>
+      <div class="form-group">
+        <label class="form-label" for="name">Nome</label>
+        <input v-model="$v.form.name.$model" type="text" placeholder="Como devemos lhe chamar?" class="form-control" id="name">
+        <div v-if="$v.form.name.$error" class="error">nome é requerido</div>
       </div>
     </form>
-    <div v-else class="text-center">
-      Successfully logged in!
-      <div class="btn" @click="reset">reset</div>
-    </div>
   </div>
 </template>
 
 <script>
-import {authenticateUser, checkIfUserExistsInDB} from "../api";
+import {authenticateUser} from "../api";
 import {required, email} from 'vuelidate/lib/validators'
   export default {
     data () {
@@ -77,22 +73,9 @@ import {required, email} from 'vuelidate/lib/validators'
     },
     methods: {
       checkIfUserExists(){
-        if (!this.$v.form.email.$invalid) {
-          this.$emit('updateAsyncState', 'pending')
-          return checkIfUserExistsInDB(this.form.email)
-          .then(() => {
-            // USER EXISTS
-            this.existingUser = true
-            this.emailCheckedInDB = true
-            this.$emit('updateAsyncState', 'success')
-          })
-          .catch(() => {
-            // USER DOESN'T EXIST
-            this.existingUser = false
-            this.emailCheckedInDB = true
-            this.$emit('updateAsyncState', 'success')
-          })
-        }
+          this.existingUser = false
+          this.emailCheckedInDB = true
+          this.$emit('updateAsyncState', 'success')
       },
       login(){
         this.wrongPassword = false

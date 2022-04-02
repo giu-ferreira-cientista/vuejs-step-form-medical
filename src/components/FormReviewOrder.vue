@@ -1,24 +1,23 @@
 <template>
   <div>
-    <h1 class="title">Confirm your order</h1>
+    <h1 class="title">Confirme sua Assinatura:</h1>
 
     <h2 class="subtitle">
-      We're almost there!
+      Estamos quase lá. Sua saúde está a um passo de ser bem cuidada por nossos especialistas.
     </h2>
 
     <div class="summary">
-      <h3>Subscription</h3>
+      <h3>Assinatura</h3>
 
       <p class="description">
-        We'll send you carefully selected coffee every month.
+        Vamos enviar um relatório completo da sua saúde a cada semana.
       </p>
 
       <div class="plans">
-        <div class="plan active-plan">
-          <div class="weight">
-            {{ wizardData.plan.weight }}
+        <div class="plan active-plan" width=600px>
+          <div class="weight" style="background-color:#FFFFFF;">          
+            <img :src=wizardData.plan.url alt="Plano" width="250" height="250">
           </div>
-
           <div class="description">
             <span class="title">
               {{ wizardData.plan.name }}
@@ -36,22 +35,22 @@
       </div>
 
       <h3>
-        Level up your box
+        Acrescente mais cuidados!
       </h3>
 
       <p class="description">
-        Treat yourself by leveling up your monthly box
+        Cuide de você mesmo, dando um upgrade no seu plano !
       </p>
 
       <div @change="submit" class="options">
         <div class="option">
-          <input v-model="form.chocolate" type="checkbox" value="chocolate" id="chocolate">
-          <label for="chocolate">4 pcs. Single Origin Chocolate (+$4/month)</label>
+          <input v-model="form.visita" type="checkbox" value="Visitas do especialista" id="visita">
+          <label for="visita">1 visita mensal do especialista (+$20/mês)</label>
         </div>
 
         <div class="option">
-          <input v-model="form.otherTreat" type="checkbox" value="chocolate" id="other_treat">
-          <label for="other_treat">Another delicious treat (+$2/month)</label>
+          <input v-model="form.garantia" type="checkbox" value="Garantia extendida no equipamento" id="garantia" style="padding-left: 10px;">
+          <label for="garantia">Não se preocupe com quedas ou riscos (+$20/mês)</label>
         </div>
       </div>
 
@@ -59,7 +58,7 @@
         <div class="w-2/3">
           <h3>Delivery</h3>
           <p class="description">
-            Your first Liquid Gold Box is right around the corner
+            Seu equipamento está pronto para ser embalado e enviado
           </p>
         </div>
 
@@ -85,19 +84,19 @@
     data () {
       return {
         form: {
-          chocolate: false,
-          otherTreat: false
+          visita: false,
+          garantia: false
         }
       }
     },
     computed: {
       totalPrice () {
         let total = this.wizardData.plan.price
-        if(this.form.chocolate){
-          total += 4
+        if(this.form.visita){
+          total += 20
         }
-        if(this.form.otherTreat){
-          total += 2
+        if(this.form.garantia){
+          total += 20
         }
         return total
       }
@@ -107,8 +106,8 @@
       submit() {
         this.$emit('update', {
           data: {
-            chocolate: this.form.chocolate,
-            otherTreat: this.form.otherTreat,
+            visita: this.form.visita,
+            garantia: this.form.garantia,
           },
           valid: true
 

@@ -2,10 +2,12 @@
   <div id="app" class="container mx-auto py-6">
     <header>
       <div>
-        <span style="font-weight: 700;text-transform: uppercase;color: #5c6162;font-size: .875rem;letter-spacing: .05em;padding-left: 0.5rem;padding-right: 0.5rem;padding-bottom: 10rem;">
-            Pandas Health App
-        </span><br>
-        <span id="logo" style="background-size: 150px;padding-bottom: 10rem;">+++++++++++++++++++</span>       
+        <span style="font-weight: 800;text-transform: uppercase;color: #5c6162;font-size: .895rem;letter-spacing: .05em;padding-left: 0.5rem;padding-right: 0.5rem;padding-bottom: 10rem;">
+            Clínica Pandas Tech Health Care
+        </span><br>        
+        <span id="logo" style="background-size: 160px;padding-bottom: 10rem;">------------------------------------------------------</span>       
+        <br><span style="font-weight: 590;text-transform: uppercase;color: #5c6162;font-size: .695rem;letter-spacing: .05em;padding-left: 0.5rem;padding-right: 0.5rem;padding-bottom: 10rem;">powered by:</span>
+                                                                               
       </div>
     </header>
 

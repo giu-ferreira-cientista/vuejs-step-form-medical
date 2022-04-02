@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1 class="title">Coffee Plans</h1>
+    <h1 class="title">Escolha o seu Plano</h1>
 
     <h2 class="subtitle">
-      We travel the world to source the very best single origin coffee for you
+      Nós oferecemos os melhores dispositivos monitoradores de saúde do mercado!
     </h2>
 
     <div class="plans">
@@ -14,8 +14,8 @@
         :class="{'active-plan': selectedPlan === plan}"
         class="plan"
       >
-        <div class="weight">
-          {{plan.weight}}
+        <div class="weight" :style=plan.margin>          
+          <img :src=plan.url alt="Plano" width="250" height="250">
         </div>
         <div class="description">
           <span class="title">
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <div v-if="$v.selectedPlan.$error" class="error">you should pick a plan to continue</div>
+    <div v-if="$v.selectedPlan.$error" class="error">Você precisa escolher um plano pra continuar</div>
   </div>
 </template>
 
@@ -43,22 +43,25 @@
       return {
         plans: [
           {
-            price: 19,
-            weight: '250g',
-            name: 'The Single',
-            description: 'One bag of freshly roasted coffee beans delivered to your house every month'
+            price: 35,
+            url: 'https://img.ibxk.com.br/2022/03/07/07143225682287.jpg',
+            name: 'Pulseira Pandas Band',
+            description: 'A Pandas Band tem um kit de sensores muito interessante para monitorar seus treinos e acompanhar o básico da sua saúde.',
+            margin: 'margin-top: 11px;'
           },
           {
-            price: 29,
-            weight: '500g',
-            name: 'The Curious',
-            description: 'Two different types of freshly roasted coffee every month'
+            price: 45,
+            url: 'https://m.media-amazon.com/images/I/61DwXW7cqZL._AC_SX522_.jpg',
+            name: 'Sensor Peitoral Pandas Chest',
+            description: 'Graças à cinta peitoral, o sensor de frequência cardíaca é colocado próximo ao coração, a forma ideal para obter leituras precisas da sua frequência cardíaca.',
+            margin: 'margin-top: 11px;'
           },
           {
-            price: 49,
-            weight: '1kg',
-            name: 'The Addict',
-            description: 'Two bags of two different types of freshly roasted coffee every month.'
+            price: 55,
+            url: 'https://www.zema.com/ccstore/v1/images/?source=/file/v4179927317032866053/products/1416657_01.jpg',
+            name: 'Pandas Smart Watch Plus',
+            description: 'Para te ajudar a cuidar da sua saúde, o modelo conta com monitor de sono, aplicativo para medir o oxigênio no sangue e batimentos cardíacos com notificações de desempenho, além das demais funções tradicionais.',
+            margin: 'margin-top: 17px;'
           }
         ],
         selectedPlan: null

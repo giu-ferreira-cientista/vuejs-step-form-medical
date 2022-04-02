@@ -1,5 +1,4 @@
-# Dynamic Forms with Vue.js
-![Dynamic Forms with Vue.js Course Illustration](https://vueschool.s3.amazonaws.com/8377de88a94fc53f21e93c26c84beadc/dynamic-forms-vuejs.jpeg)
+# Formulários Dinâmicos com Vue.js - Medical Form
 
 This repository contains the example code for the [Custom Vue.js Directives](https://vueschool.io/courses/dynamic-forms-vuejs) Course.
 
@@ -12,6 +11,7 @@ The assignment of the course is to complete the signup and order process of our 
 A user should be able to:
 
 - Pick a Coffee plan
+- Run Test
 - Login or create an account
 - Enter her delivery details
 - Select additional monthly treats

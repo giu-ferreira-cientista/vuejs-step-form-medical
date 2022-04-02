@@ -20,22 +20,26 @@
             @click="goBack"
             v-if="currentStepNumber > 1"
             class="btn-outlined"
-        >Back
+        >Voltar
         </button>
         <button
-            @click="nextButtonAction"
+            @click="nextButtonAction"  
             :disabled="!canGoNext"
             class="btn"
-        >{{ isLastStep ? 'Complete Order' : 'Next'  }}</button>
+        >{{ isLastStep ? 'Completar Assinatura' : 'Próximo'  }}</button>
       </div>
 
-      <pre><code>{{form}}</code></pre>
+      <!-- <pre><code>{{form}}</code></pre> -->
     </div>
     <div v-else>
-      <h1 class="title">Obrigado!</h1>
+      <h1 class="title">Obrigado pela sua assinatura!</h1><br>
       <h2 class="subtitle">
-        Seus dados serão enviados para o seu médico em tempo real, para que ele acompanhe o seu estado de saúde.
+        Seu dispositivo está a caminho. <br><br>
+        Seus dados serão enviados para o seu médico em tempo real, para que ele acompanhe os seus indicadores.<br><br>
+        Parabéns por cuidar da sua saúde!
       </h2>
+      <br>
+      <center><a href=".">Novo Cadastro</a></center>
     </div>
     <div class="loading-wrapper" v-if="asyncState === 'pending'">
       <div class="loader">
@@ -74,13 +78,27 @@ export default {
       ],
       form: {
         plan: null,
-        email: null,
+        email: null,        
         name: null,
         password: null,
         address: null,
         recipient: null,
-        chocolate: false,
-        otherTreat: false
+        idade: null,
+        sexo: null,
+        peso: null,
+        altura: null,
+        fumante: false,
+        historico: false,
+        gestante: false,
+        avc: false,
+        frutas: false,
+        vegetais: false,
+        alcool: false,
+        coracao: false,
+        colesterol: false,
+        visita: false,
+        garantia: false
+
       }
     }
   },
