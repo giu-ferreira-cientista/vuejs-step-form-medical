@@ -3,7 +3,7 @@
 
 ---
 
-# form-wizard
+# Form-wizard
 
 - `main` branch contains the final code 
 
